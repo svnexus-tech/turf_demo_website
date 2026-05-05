@@ -1,4 +1,4 @@
-Smart Turf Booking & Reservation System
+## Smart Turf Booking & Reservation System
 
 A real-time turf booking platform that intelligently manages slot availability, prevents duplicate bookings, and recommends optimal time slots based on user requirements.
 
@@ -13,7 +13,7 @@ Built using a serverless architecture with Google Apps Script + Google Sheets, t
 👨‍💼 Admin Cancellation & Control Panel
 🧠 Problem Solved
 
-Traditional turf booking systems often face:
+# Traditional turf booking systems often face:
 
 ❌ Double bookings
 ❌ Manual tracking errors
@@ -22,7 +22,7 @@ Traditional turf booking systems often face:
 
 ✅ This system solves all of the above with automated validation + smart scheduling logic
 
-🏗️ System Architecture
+# 🏗️ System Architecture
 Frontend (HTML/CSS/JS)
         ↓
 Google Apps Script (API Layer)
@@ -30,55 +30,55 @@ Google Apps Script (API Layer)
 Google Sheets (Database)
         ↓
 WhatsApp Integration (User Notification)
-🔥 Features in Detail
+
+# 🔥 Features in Detail
 1. Real-Time Availability Engine
-Fetches booked slots dynamically
-Filters unavailable time slots instantly
-Updates UI based on selected date
+        Fetches booked slots dynamically
+        Filters unavailable time slots instantly
+        Updates UI based on selected date
 2. Smart Slot Recommendation
-User selects number of hours
-System suggests continuous available slots
-
-Example:
-
-User selects 2 hours →
-System shows:
-09:00 AM – 11:00 AM ✅
-05:00 PM – 07:00 PM ✅
+        User selects number of hours
+        System suggests continuous available slots
+        Example:
+                User selects 2 hours →
+                System shows:
+                09:00 AM – 11:00 AM ✅
+                05:00 PM – 07:00 PM ✅
 3. Duplicate Booking Prevention (Core Feature)
-Uses Slot Key System
-Slot Key = Date + Time
-Example:
-2026-05-09|09:00 AM
-Ensures:
-No overlapping bookings
-No race-condition conflicts
-100% booking accuracy
+        Uses Slot Key System
+        Slot Key = Date + Time
+        Example:
+                2026-05-09|09:00 AM
+        Ensures:
+                No overlapping bookings
+                No race-condition conflicts
+                100% booking accuracy
 4. Multi-Hour Reservation Handling
-
-If user books 2 hours from 09:00 AM, system blocks:
-
-09:00 AM
-10:00 AM
+        If user books 2 hours from 09:00 AM, system blocks:
+                09:00 AM
+                10:00 AM
 5. WhatsApp Integration
-Auto-generates booking confirmation message
-Opens WhatsApp with pre-filled details
+        Auto-generates booking confirmation message
+        Opens WhatsApp with pre-filled details
 6. Admin Controls
-Cancel bookings using Reservation ID
-Maintain booking lifecycle
-🛠️ Tech Stack
+        Cancel bookings using Reservation ID
+        Maintain booking lifecycle
+
+# 🛠️ Tech Stack
 Layer	Technology
 Frontend	HTML5, CSS3, JavaScript
 Backend	Google Apps Script
 Database	Google Sheets
 Integration	WhatsApp API
-📂 Project Structure
+
+# 📂 Project Structure
 📁 turf-booking-system
  ├── index.html
  ├── script.js (inline or external)
  ├── apps-script.gs
  └── README.md
-⚙️ Setup Instructions
+
+# ⚙️ Setup Instructions
 1. Clone Repository
 git clone https://github.com/your-username/turf-booking-system.git
 2. Setup Google Sheet
