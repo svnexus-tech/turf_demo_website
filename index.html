@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Turf Arena | Premium Turf Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #070a07;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(7, 10, 7, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #b6ff3b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-size: 15px;
+            color: #dddddd;
+        }
+
+        .nav-links a:hover {
+            color: #b6ff3b;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #b6ff3b;
+            color: #071007;
+            padding: 13px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #d0ff76;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        section {
+            padding: 95px 0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            background:
+                radial-gradient(circle at top right, rgba(182, 255, 59, 0.22), transparent 35%),
+                radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.18), transparent 35%),
+                #070a07;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 9px 18px;
+            border: 1px solid rgba(182, 255, 59, 0.35);
+            background: rgba(182, 255, 59, 0.08);
+            border-radius: 40px;
+            color: #d8ff95;
+            margin-bottom: 22px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 68px;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 44px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-label {
+            color: #b6ff3b;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .hero p,
+        .section-desc {
+            color: #c9c9c9;
+            font-size: 18px;
+            max-width: 680px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 34px;
+            flex-wrap: wrap;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 42px;
+            max-width: 560px;
+        }
+
+        .stat h3 {
+            color: #b6ff3b;
+            font-size: 34px;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: #a8a8a8;
+        }
+
+        .turf-card {
+            min-height: 480px;
+            border-radius: 32px;
+            padding: 28px;
+            background:
+                linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(20, 83, 45, 0.98)),
+                repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(255, 255, 255, 0.08) 70px, rgba(255, 255, 255, 0.08) 140px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 30px 90px rgba(182, 255, 59, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .field-line {
+            height: 100%;
+            min-height: 420px;
+            border: 2px solid rgba(255, 255, 255, 0.65);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .field-circle {
+            width: 140px;
+            height: 140px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .field-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ffffff;
+        }
+
+        .floating-box {
+            position: absolute;
+            top: 36px;
+            left: 36px;
+            background: rgba(0, 0, 0, 0.68);
+            padding: 16px 20px;
+            border-radius: 18px;
+        }
+
+        .floating-box span {
+            color: #b6ff3b;
+            font-weight: 800;
+        }
+
+        .dark-section {
+            background: #101510;
+        }
+
+        .center-title {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 55px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 26px;
+            padding: 30px;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            background: rgba(255, 255, 255, 0.075);
+        }
+
+        .icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 18px;
+            background: #b6ff3b;
+            color: #071007;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .card p,
+        .price-card p,
+        .contact-item p {
+            color: #bdbdbd;
+            font-size: 15px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            margin-top: 45px;
+        }
+
+        .price-card {
+            padding: 34px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .price-card.featured {
+            background: #b6ff3b;
+            color: #071007;
+            transform: scale(1.03);
+        }
+
+        .price-card.featured p,
+        .price-card.featured li {
+            color: #152015;
+        }
+
+        .price {
+            font-size: 46px;
+            font-weight: 900;
+            margin: 22px 0;
+        }
+
+        ul {
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: #d7d7d7;
+            font-size: 15px;
+        }
+
+        li::before {
+            content: "✓ ";
+            color: #b6ff3b;
+            font-weight: bold;
+        }
+
+        .featured li::before {
+            color: #071007;
+        }
+
+        .reservation-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .info-list {
+            margin-top: 30px;
+            display: grid;
+            gap: 16px;
+            color: #d7d7d7;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 34px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #070a07;
+            color: #ffffff;
+            outline: none;
+            margin-bottom: 16px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #b6ff3b;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.03));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 44px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 38px;
+            align-items: start;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .contact-item {
+            background: #070a07;
+            border-radius: 22px;
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-item h3 {
+            color: #b6ff3b;
+            margin-bottom: 6px;
+        }
+
+        footer {
+            padding: 28px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8e8e8e;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+
+            .hero-grid,
+            .reservation-grid,
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+
+            .cards,
+            .pricing-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .cards,
+            .pricing-grid,
+            .form-grid,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="#home" class="logo">Elite Turf Arena</a>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#reservation">Reservation</a>
+                <a href="#contact">Contact Details</a>
+            </nav>
+            <a href="#reservation" class="btn">Book Now</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div>
+                <div class="badge">Premium Football Turf Booking</div>
+                <h1>Book Your Turf. Own The Game.</h1>
+                <p>A modern sports venue for football matches, corporate events, tournaments, coaching sessions, and
+                    weekend play. Reserve your slot in minutes.</p>
+                <div class="hero-actions">
+                    <a href="#reservation" class="btn">Reserve a Slot</a>
+                    <a href="#pricing" class="btn btn-outline">View Pricing</a>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>5K+</h3>
+                        <p>Bookings</p>
+                    </div>
+                    <div class="stat">
+                        <h3>4.9</h3>
+                        <p>Customer Rating</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Booking Support</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="turf-card">
+                <div class="floating-box">Today’s Prime Slot<br><span>7:00 PM Available</span></div>
+                <div class="field-line">
+                    <div class="field-circle">
+                        <div class="field-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section" id="services">
+        <div class="container">
+            <div class="center-title">
+                <div class="section-label">Services</div>
+                <h2>Everything Your Game Needs</h2>
+                <p class="section-desc">Professional turf services designed for players, teams, schools, corporates, and
+                    event organizers.</p>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">⚽</div>
+                    <h3>Football Turf Booking</h3>
+                    <p>Book professional-grade 5-a-side and 7-a-side turf slots with a premium playing surface.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">👥</div>
+                    <h3>Corporate Matches</h3>
+                    <p>Host employee engagement matches, friendly tournaments, and company sports events.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏆</div>
+                    <h3>Tournament Hosting</h3>
+                    <p>Venue support for leagues, weekend tournaments, and private sports events.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🛡️</div>
+                    <h3>Coaching & Training</h3>
+                    <p>Structured football coaching sessions for students, beginners, and regular players.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <div class="section-label">Pricing</div>
+            <h2>Simple Turf Pricing</h2>
+            <p class="section-desc">Flexible pricing for weekday play, weekend prime slots, coaching, and tournament
+                bookings.</p>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Hourly Turf Booking</h3>
+                    <p>Ideal for casual games, practice sessions, and small groups.</p>
+                    <div class="price">₹1,200</div>
+                    <ul>
+                        <li>60-minute slot</li>
+                        <li>Floodlight access</li>
+                        <li>Changing area</li>
+                        <li>Online reservation</li>
+                    </ul>
+                    <a href="#reservation" class="btn">Choose Plan</a>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>Weekend Prime Slot</h3>
+                    <p>Best for high-demand evening and weekend matches.</p>
+                    <div class="price">₹1,800</div>
+                    <ul>
+                        <li>Peak-hour booking</li>
+                        <li>Premium turf access</li>
+                        <li>Match ball included</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="#reservation" class="btn" style="background:#071007;color:#b6ff3b;">Choose Plan</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Tournament Package</h3>
+                    <p>Perfect for schools, corporates, clubs, and local leagues.</p>
+                    <div class="price">Custom</div>
+                    <ul>
+                        <li>Multi-hour booking</li>
+                        <li>Scoreboard support</li>
+                        <li>Team coordination</li>
+                        <li>Event branding space</li>
+                    </ul>
+                    <a href="#reservation" class="btn">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section" id="reservation">
+        <div class="container reservation-grid">
+            <div>
+                <div class="section-label">Reservation</div>
+                <h2>Reserve Your Turf Slot</h2>
+                <p class="section-desc">Fill the form and our team will confirm your booking, pricing, and available
+                    slots quickly.</p>
+                <div class="info-list">
+                    <p>🕒 Open daily from 5:00 AM to 11:30 PM</p>
+                    <p>✅ Clean, safe, and well-maintained playing surface</p>
+                    <p>👥 Suitable for teams, friends, corporates, and academies</p>
+                </div>
+            </div>
+
+            <form id="reservationForm">
+                <div class="form-grid">
+                    <input type="text" id="name" name="name" placeholder="Full Name" required />
+                    <input type="tel" id="phone" name="phone" placeholder="WhatsApp Number e.g. 9876543210" required />
+                </div>
+                <div class="form-grid">
+                    <input type="date" id="date" name="date" required />
+                    <select id="hoursRequired" name="hoursRequired" required>
+                        <option value="">Select Hours Required</option>
+                        <option value="1">1 Hour</option>
+                        <option value="2">2 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="4">4 Hours</option>
+                    </select>
+
+                    <select id="timeSlot" name="timeSlot" required>
+                        <option value="">Select Date & Hours First</option>
+                    </select>
+                </div>
+                <select id="bookingType" name="bookingType" required>
+                    <option value="">Select Booking Type</option>
+                    <option>Hourly Turf Booking</option>
+                    <option>Weekend Prime Slot</option>
+                    <option>Corporate Match</option>
+                    <option>Tournament Package</option>
+                    <option>Coaching Session</option>
+                </select>
+                <textarea id="requirements" name="requirements" placeholder="Additional requirements"></textarea>
+                <button type="submit" class="btn">Submit Reservation Request</button>
+                <p id="formStatus" style="margin-top:15px;color:#b6ff3b;font-weight:700;"></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact-box">
+            <div>
+                <div class="section-label">Contact Details</div>
+                <h2>Visit. Call. Book.</h2>
+                <p class="section-desc">Reach out for bookings, tournament enquiries, coaching partnerships, and
+                    corporate sports events.</p>
+            </div>
+
+            <div class="contact-list">
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Elite Turf Arena, Main Road, Coimbatore, Tamil Nadu</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>+91 98765 43210</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p>booking@eliteturfarena.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            © 2026 Elite Turf Arena. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZUaM5fW-q3foScv7vF6lWIddTVs6lw5bBhFCCcAowrLDv-dvtVl9cnIuJRMNKUWr0vw/exec";
+
+        function callAppsScript(params, callback) {
+            const callbackName = "callback_" + Date.now();
+            const script = document.createElement("script");
+
+            window[callbackName] = function (response) {
+                callback(response);
+                delete window[callbackName];
+                document.body.removeChild(script);
+            };
+
+            const query = new URLSearchParams({
+                ...params,
+                callback: callbackName
+            }).toString();
+
+            script.src = SCRIPT_URL + "?" + query;
+            document.body.appendChild(script);
+        }
+        /*
+        document.getElementById("date").addEventListener("change", function () {
+            const selectedDate = this.value;
+            const timeSlotDropdown = document.getElementById("timeSlot");
+            const status = document.getElementById("formStatus");
+
+            timeSlotDropdown.innerHTML = '<option value="">Loading available slots...</option>';
+            status.innerText = "Checking available slots...";
+
+            if (!selectedDate) {
+                timeSlotDropdown.innerHTML = '<option value="">Select Date First</option>';
+                return;
+            }
+
+            callAppsScript(
+                { action: "getAvailableSlots", date: selectedDate },
+                function (response) {
+                    timeSlotDropdown.innerHTML = "";
+
+                    if (!response.availableSlots || response.availableSlots.length === 0) {
+                        timeSlotDropdown.innerHTML = '<option value="">No slots available</option>';
+                        status.style.color = "#ff6b6b";
+                        status.innerText = "No available slots for this date.";
+                        return;
+                    }
+
+                    timeSlotDropdown.innerHTML = '<option value="">Select Available Time Slot</option>';
+
+                    response.availableSlots.forEach(function (slot) {
+                        const option = document.createElement("option");
+                        option.value = slot;
+                        option.textContent = slot;
+                        timeSlotDropdown.appendChild(option);
+                    });
+
+                    status.style.color = "#b6ff3b";
+                    status.innerText = response.availableSlots.length + " slots available.";
+                }
+            );
+        });*/
+
+        document.getElementById("date").addEventListener("change", loadRecommendedSlots);
+        document.getElementById("hoursRequired").addEventListener("change", loadRecommendedSlots);
+
+        function loadRecommendedSlots() {
+            const selectedDate = document.getElementById("date").value;
+            const hoursRequired = document.getElementById("hoursRequired").value;
+            const timeSlotDropdown = document.getElementById("timeSlot");
+            const status = document.getElementById("formStatus");
+
+            if (!selectedDate || !hoursRequired) {
+                timeSlotDropdown.innerHTML = '<option value="">Select Date & Hours First</option>';
+                return;
+            }
+
+            timeSlotDropdown.innerHTML = '<option value="">Loading recommended slots...</option>';
+
+            callAppsScript(
+                {
+                    action: "getRecommendedSlots",
+                    date: selectedDate,
+                    hoursRequired: hoursRequired
+                },
+                function (response) {
+                    timeSlotDropdown.innerHTML = "";
+
+                    if (!response.recommendedSlots || response.recommendedSlots.length === 0) {
+                        timeSlotDropdown.innerHTML = '<option value="">No continuous slots available</option>';
+                        status.style.color = "#ff6b6b";
+                        status.innerText = "No continuous slots available for selected hours.";
+                        return;
+                    }
+
+                    timeSlotDropdown.innerHTML = '<option value="">Select Recommended Slot</option>';
+
+                    response.recommendedSlots.forEach(function (slot) {
+                        const option = document.createElement("option");
+                        option.value = slot.startTime;
+                        option.textContent = slot.label;
+                        timeSlotDropdown.appendChild(option);
+                    });
+
+                    status.style.color = "#b6ff3b";
+                    status.innerText = response.recommendedSlots.length + " recommended slots available.";
+                }
+            );
+        }
+
+        document.getElementById("reservationForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const reservation = {
+                action: "reserve",
+                name: document.getElementById("name").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                date: document.getElementById("date").value,
+                hoursRequired: document.getElementById("hoursRequired").value,
+                time: document.getElementById("timeSlot").value,
+                bookingType: document.getElementById("bookingType").value,
+                requirements: document.getElementById("requirements").value.trim()
+            };
+
+            callAppsScript(reservation, function (response) {
+                const status = document.getElementById("formStatus");
+
+                if (!response.success) {
+                    status.style.color = "#ff6b6b";
+                    status.innerText = response.message;
+                    return;
+                }
+
+                status.style.color = "#b6ff3b";
+                status.innerText = "Reserved successfully. ID: " + response.reservationId;
+
+                const phone = "91" + reservation.phone.replace(/[^0-9]/g, "");
+                const message = encodeURIComponent(
+                    "Hi " + reservation.name + ", your turf booking request is received." + "Reservation ID: " + response.reservationId + "Date: " + reservation.date + "Time: " + reservation.time + "Booking Type: " + reservation.bookingType + "Our team will confirm shortly. - Elite Turf Arena");
+
+                window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
+                document.getElementById("reservationForm").reset();
+                document.getElementById("timeSlot").innerHTML = '<option value="">Select Date First</option>';
+            });
+        });
+    </script>
+</body>
+
+</html>
