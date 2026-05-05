@@ -4,14 +4,14 @@ A real-time turf booking platform that intelligently manages slot availability, 
 
 Built using a serverless architecture with Google Apps Script + Google Sheets, this system delivers a scalable, cost-effective solution for sports venue management.
 
-🌟 Key Highlights
-⚡ Real-Time Slot Availability
-🔒 100% Duplicate Booking Prevention
-🧠 Smart Multi-Hour Slot Recommendation
-📊 Google Sheets as Backend Database
-📩 WhatsApp Booking Integration
-👨‍💼 Admin Cancellation & Control Panel
-🧠 Problem Solved
+# 🌟 Key Highlights
+*⚡ Real-Time Slot Availability
+*🔒 100% Duplicate Booking Prevention
+*🧠 Smart Multi-Hour Slot Recommendation
+*📊 Google Sheets as Backend Database
+*📩 WhatsApp Booking Integration
+*👨‍💼 Admin Cancellation & Control Panel
+*🧠 Problem Solved
 
 # Traditional turf booking systems often face:
 
