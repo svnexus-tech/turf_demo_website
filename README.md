@@ -80,50 +80,41 @@ Integration	WhatsApp API
 
 # ⚙️ Setup Instructions
 1. Clone Repository
-git clone https://github.com/your-username/turf-booking-system.git
+        git clone https://github.com/your-username/turf-booking-system.git
 2. Setup Google Sheet
-
-Create columns:
-
-Reservation ID | Timestamp | Name | Phone | Date | Time | Booking Type | Requirements | Status | Slot Key
+        Create columns:
+                Reservation ID | Timestamp | Name | Phone | Date | Time | Booking Type | Requirements | Status | Slot Key
 3. Setup Google Apps Script
-Open Apps Script
-Paste backend code
-Deploy as Web App
-Access: Anyone
-Execute as: Me
+        Open Apps Script
+        Paste backend code
+        Deploy as Web App
+                Access: Anyone
+                Execute as: Me
 4. Connect Frontend
+        Update in your HTML:
+                const SCRIPT_URL = "YOUR_DEPLOYED_WEB_APP_URL";
+# 📸 Screenshots (Optional)
 
-Update in your HTML:
 
-const SCRIPT_URL = "YOUR_DEPLOYED_WEB_APP_URL";
-📸 Screenshots (Optional)
-
-Add UI screenshots here for better presentation
-
-📈 Impact
-🚀 Eliminated duplicate bookings completely
-⚙️ Reduced manual work by 80%
-💡 Built fully serverless architecture (zero hosting cost)
-📊 Scalable for multiple turfs & locations
-🧪 Sample API Calls
-Get Available Slots
-?action=getAvailableSlots&date=2026-05-09
-Get Recommended Slots
-?action=getRecommendedSlots&date=2026-05-09&hoursRequired=2
-🔐 Future Enhancements
-🔑 Login system for users/admin
-💳 Online payment integration
-📱 Mobile app version
-📍 Multi-location turf management
-📊 Dashboard analytics
-👨‍💻 Author
-
-Sathya Sivalingam
-Senior Technical Lead | Software Development Specialist
-
-⭐ Support
-
+# 📈 Impact
+        🚀 Eliminated duplicate bookings completely
+        ⚙️ Reduced manual work by 80%
+        💡 Built fully serverless architecture (zero hosting cost)
+        📊 Scalable for multiple turfs & locations
+        🧪 Sample API Calls
+# Get Available Slots
+        ?action=getAvailableSlots&date=2026-05-09
+# Get Recommended Slots
+        ?action=getRecommendedSlots&date=2026-05-09&hoursRequired=2
+        
+# 🔐 Future Enhancements
+        🔑 Login system for users/admin
+        💳 Online payment integration
+        📱 Mobile app version
+        📍 Multi-location turf management
+        📊 Dashboard analytics 
+        
+# ⭐ Support
 If you like this project:
 
 ⭐ Star the repo
@@ -131,10 +122,10 @@ If you like this project:
 📢 Share it
 💼 Use Case
 
-This project is ideal for:
+# This project is ideal for:
 
-Turf owners
-Sports academies
-Event organizers
-Freelance portfolio
-Product engineering demos
+* Turf owners
+* Sports academies
+* Event organizers
+* Freelance portfolio
+* Product engineering demos
